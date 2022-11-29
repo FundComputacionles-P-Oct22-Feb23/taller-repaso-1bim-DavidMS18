@@ -1,0 +1,54 @@
+Inicio 
+nombre, x(20) [{a-z}, {A-Z}, {BS}]
+cedula, i[0-n]
+horaMatutina, i[0-n]
+horaNocturna, i[0-n]
+opcion, x(1) [{a-z}, {A-Z}]
+bandera, l <-- true
+salarioFinal, d[0-n]
+adicional, d[0-n] <-- 10
+costoMatutina, i[0-n] <-- 10
+costoNocturno, i[0-n] <-- 15
+totalMatutina, d[0-n]
+totalNocturna, d[0-n]
+empleados, i[0-n] <--
+cadenaFinal, x(300) [{a-z}, {A-Z}, {0 -n} {BS}] <-- ""
+
+cadenaFinal <-- cadenaFinal + "Nómina de Trabajadores\n\n"
+Mientras bandera sea == true entonces
+   <<"Ingrese nombre del empleado: "
+   >>nombre
+   <<"Ingrese la cedula del empleado: "
+   >>cedula
+   <<"Ingrese las horas matutinas trabajadas: "
+   >>horaMatutina
+   <<"Ingrese las horas nocturbas trabajadas: "
+   >>horaNocturna
+   TotalMatutina <-- (horaMatutina * costoMatutina)
+   TotalNocturna <-- (horaNocturna * costoNocturno)
+   	Si horaNocturna >= 10 entonces
+   		adicional <-- (costoNocturna * adicional)/100
+   		costoNocturna <-- costoNoocturna + adional
+   		totalNocturna <-- horaNocturna * costoNocturna
+   	FinSi
+    salarioFinal <-- totalMatutina + totalNocturna
+    cadenaFinal <-- cadenaFinal + "Rol del trabajador de nombre " + "con cedula: " + cedula + ".\n\t" +"Horas matutina trabajadas: " + horaMatutina +  ".\n\t" + "Horas nocturnas trabajadas: " + horaNocturna + ".\n\t" + "Total a candcelar: " + salarioFinal + ".\n\n" 
+    empleados <-- empleados + 1
+
+  	<<"Si desea terminar el programa, presione (s) y si desea continuar precione (n)"
+  	>> opcion 
+  	Si opcion == "s" entonces
+  	bandera <-- false
+  FinSi
+FinMientras
+>>cadenaFinal + "Numero de empleados " + empleados
+  Fin
+
+
+
+
+
+
+
+
+
